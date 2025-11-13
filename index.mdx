@@ -1,71 +1,727 @@
 ---
-title: Introduction
-description: "Welcome to the home of your new documentation"
+title: 'TTS Models'
+description: 'Open-source text-to-speech models powering sub200'
+icon: 'microphone'
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.png"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.png"
-  alt="Hero Dark"
-/>
+## Overview
 
-## Setting up
-
-The first step to world-class documentation is setting up your editing environments.
+sub200 provides unified access to state-of-the-art open-source TTS models through WebSocket API. Our curated selection covers edge deployment to research-grade synthesis.
 
 <CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
+  <Card title="Model Playground" icon="play" href="https://playground.sub200.dev">
+    Try models in your browser
   </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
+  <Card title="Pricing" icon="credit-card" href="/pricing">
+    Simple, transparent pricing
   </Card>
 </CardGroup>
 
-## Make it yours
+## Available Models
 
-Update your docs to your brand and add valuable content for the best user conversion.
+<Tabs>
+  <Tab title="Enterprise Models">
+    
+    ### Maya Research - Maya One
+    
+    State-of-the-art research model with advanced neural architecture.
+    
+    <Card>
+      **Specifications**
+      - Parameters: Enterprise-grade
+      - Latency: ~400ms
+      - Quality: 4.9/5.0
+      - GPU Required: Yes
+    </Card>
+    
+    **Best for:** Research applications, premium audiobooks, high-end content production
+    
+    ```json
+    {
+      "model": "maya-research/maya1",
+      "type": "research",
+      "quality": "studio"
+    }
+    ```
+    
+    ### Canopy Labs - Orpheus Three Billion
+    
+    Professional model with three billion parameters for high-quality synthesis.
+    
+    <Card>
+      **Specifications**
+      - Parameters: 3B
+      - Latency: ~350ms
+      - Quality: 4.8/5.0
+      - GPU Required: Yes
+    </Card>
+    
+    **Best for:** Commercial production, media content, professional narration
+    
+    ```json
+    {
+      "model": "canopylabs/orpheus-3b-0.1-ft",
+      "type": "professional",
+      "parameters": "3B"
+    }
+    ```
+    
+    ### Nari Labs - Dia One Point Six Billion
+    
+    Versatile conversational model with natural dialogue capabilities.
+    
+    <Card>
+      **Specifications**
+      - Parameters: 1.6B
+      - Latency: ~220ms
+      - Quality: 4.5/5.0
+      - GPU Required: Yes
+    </Card>
+    
+    **Best for:** Conversational AI, virtual assistants, interactive applications
+    
+    ```json
+    {
+      "model": "nari-labs/Dia-1.6B",
+      "type": "conversational",
+      "parameters": "1.6B"
+    }
+    ```
+    
+    ### Sesame - CSM One Billion
+    
+    Balanced billion-parameter model for production use.
+    
+    <Card>
+      **Specifications**
+      - Parameters: 1B
+      - Latency: ~180ms
+      - Quality: 4.4/5.0
+      - GPU Required: Yes
+    </Card>
+    
+    **Best for:** General purpose applications, stable performance, production systems
+    
+    ```json
+    {
+      "model": "sesame/csm-1b",
+      "type": "balanced",
+      "parameters": "1B"
+    }
+    ```
+    
+  </Tab>
+  <Tab title="Edge Models">
+    
+    ### Hexgrad - Kokoro Eighty-Two Million
+    
+    Ultra-lightweight model for edge deployment.
+    
+    <Card>
+      **Specifications**
+      - Parameters: 82M
+      - Latency: ~30ms
+      - Memory: Less than 500MB
+      - GPU Required: No
+    </Card>
+    
+    **Best for:** IoT devices, mobile applications, real-time systems
+    
+    ```json
+    {
+      "model": "hexgrad/Kokoro-82M",
+      "type": "edge",
+      "size": "330MB"
+    }
+    ```
+    
+    ### Neuphonic - NeuTTS Air
+    
+    Cloud-optimized lightweight model.
+    
+    <Card>
+      **Specifications**
+      - Parameters: Compact
+      - Latency: ~75ms
+      - Throughput: High
+      - GPU Required: Optional
+    </Card>
+    
+    **Best for:** API services, cloud applications, high-volume processing
+    
+    ```json
+    {
+      "model": "neuphonic/neutts-air",
+      "type": "cloud",
+      "optimized": true
+    }
+    ```
+    
+    ### ResembleAI - Chatterbox
+    
+    Dialogue-optimized conversational model.
+    
+    <Card>
+      **Specifications**
+      - Parameters: Medium
+      - Latency: ~150ms
+      - Emotions: Six types
+      - GPU Required: Recommended
+    </Card>
+    
+    **Best for:** Chatbots, NPCs, interactive dialogue systems
+    
+    ```json
+    {
+      "model": "ResembleAI/chatterbox",
+      "type": "dialogue",
+      "emotions": ["neutral", "happy", "sad", "angry", "fearful", "surprised"]
+    }
+    ```
+    
+    ### Coqui - XTTS Version Two
+    
+    Cross-lingual synthesis with voice cloning.
+    
+    <Card>
+      **Specifications**
+      - Languages: Twenty-five plus
+      - Latency: ~200ms
+      - Voice Cloning: Yes
+      - GPU Required: Yes
+    </Card>
+    
+    **Best for:** Multilingual applications, dubbing, voice adaptation
+    
+    ```json
+    {
+      "model": "coqui/XTTS-v2",
+      "type": "multilingual",
+      "languages": 25,
+      "cloning": true
+    }
+    ```
+    
+  </Tab>
+</Tabs>
+
+## Model Comparison
+
+| Model | Parameters | Latency | Quality | GPU | Use Case |
+|-------|------------|---------|---------|-----|----------|
+| maya-research/maya1 | Enterprise | ~400ms | 4.9/5 | Yes | Research |
+| canopylabs/orpheus-3b-0.1-ft | 3B | ~350ms | 4.8/5 | Yes | Production |
+| nari-labs/Dia-1.6B | 1.6B | ~220ms | 4.5/5 | Yes | Dialogue |
+| sesame/csm-1b | 1B | ~180ms | 4.4/5 | Yes | Balanced |
+| hexgrad/Kokoro-82M | 82M | ~30ms | 4.0/5 | No | Edge |
+| neuphonic/neutts-air | Compact | ~75ms | 4.2/5 | Optional | Cloud |
+| ResembleAI/chatterbox | Medium | ~150ms | 4.3/5 | Recommended | Interactive |
+| coqui/XTTS-v2 | Large | ~200ms | 4.5/5 | Yes | Multilingual |
+
+## WebSocket API
+
+Connect to any model through our unified WebSocket API endpoint.
+
+<CodeGroup>
+
+```javascript Node.js
+const WebSocket = require('ws');
+
+const ws = new WebSocket('wss://api.sub200.dev/v1/tts', {
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY'
+  }
+});
+
+ws.on('open', () => {
+  ws.send(JSON.stringify({
+    model: 'hexgrad/Kokoro-82M',
+    text: 'Hello, world!',
+    voice_settings: {
+      stability: 0.75,
+      similarity_boost: 0.75,
+      style: 0.5,
+      speed: 1.0
+    },
+    output_format: 'mp3_44100_128'
+  }));
+});
+
+ws.on('message', (data) => {
+  // Handle audio chunks
+  console.log('Received audio chunk:', data.length, 'bytes');
+});
+```
+
+```python Python
+import websocket
+import json
+
+def on_message(ws, message):
+    print(f"Received audio chunk: {len(message)} bytes")
+
+def on_open(ws):
+    request = {
+        "model": "hexgrad/Kokoro-82M",
+        "text": "Hello, world!",
+        "voice_settings": {
+            "stability": 0.75,
+            "similarity_boost": 0.75,
+            "style": 0.5,
+            "speed": 1.0
+        },
+        "output_format": "mp3_44100_128"
+    }
+    ws.send(json.dumps(request))
+
+ws = websocket.WebSocketApp(
+    "wss://api.sub200.dev/v1/tts",
+    header={"Authorization": "Bearer YOUR_API_KEY"},
+    on_open=on_open,
+    on_message=on_message
+)
+
+ws.run_forever()
+```
+
+```go Go
+package main
+
+import (
+    "github.com/gorilla/websocket"
+    "encoding/json"
+)
+
+func main() {
+    headers := map[string][]string{
+        "Authorization": {"Bearer YOUR_API_KEY"},
+    }
+    
+    c, _, _ := websocket.DefaultDialer.Dial(
+        "wss://api.sub200.dev/v1/tts", 
+        headers
+    )
+    defer c.Close()
+    
+    request := map[string]interface{}{
+        "model": "hexgrad/Kokoro-82M",
+        "text": "Hello, world!",
+        "voice_settings": map[string]interface{}{
+            "stability": 0.75,
+            "similarity_boost": 0.75,
+            "style": 0.5,
+            "speed": 1.0,
+        },
+        "output_format": "mp3_44100_128",
+    }
+    
+    c.WriteJSON(request)
+}
+```
+
+</CodeGroup>
+
+## Request Parameters
+
+<ParamField path="model" type="string" required>
+  Model identifier for synthesis
+  
+  Available models:
+  - maya-research/maya1
+  - hexgrad/Kokoro-82M
+  - neuphonic/neutts-air
+  - coqui/XTTS-v2
+  - ResembleAI/chatterbox
+  - sesame/csm-1b
+  - nari-labs/Dia-1.6B
+  - canopylabs/orpheus-3b-0.1-ft
+</ParamField>
+
+<ParamField path="text" type="string" required>
+  Text to synthesize (max length varies by model and plan)
+</ParamField>
+
+<ParamField path="voice_settings" type="object">
+  Voice customization parameters
+</ParamField>
+
+<ParamField path="voice_settings.stability" type="number" default="0.75">
+  Voice consistency (0.0 to 1.0)
+</ParamField>
+
+<ParamField path="voice_settings.similarity_boost" type="number" default="0.75">
+  Voice character strength (0.0 to 1.0)
+</ParamField>
+
+<ParamField path="voice_settings.style" type="number" default="0.5">
+  Speaking style intensity (0.0 to 1.0)
+</ParamField>
+
+<ParamField path="voice_settings.speed" type="number" default="1.0">
+  Speech rate multiplier (0.5 to 2.0)
+</ParamField>
+
+<ParamField path="voice_settings.pitch" type="number" default="0">
+  Pitch shift in semitones (-12 to 12)
+</ParamField>
+
+<ParamField path="output_format" type="string" default="mp3_44100_128">
+  Audio output format
+  
+  Options:
+  - mp3_44100_128: MP3 at 44.1kHz, 128kbps
+  - mp3_22050_32: MP3 at 22.05kHz, 32kbps
+  - pcm_16000: Raw PCM at 16kHz
+  - pcm_22050: Raw PCM at 22.05kHz
+  - pcm_44100: Raw PCM at 44.1kHz
+</ParamField>
+
+## Response Format
+
+<ResponseField name="audio" type="string">
+  Base64-encoded audio chunk
+</ResponseField>
+
+<ResponseField name="metadata" type="object">
+  Stream metadata (sent with first chunk)
+</ResponseField>
+
+<ResponseField name="metadata.duration_ms" type="number">
+  Total audio duration in milliseconds
+</ResponseField>
+
+<ResponseField name="metadata.sample_rate" type="number">
+  Audio sample rate
+</ResponseField>
+
+<ResponseField name="metadata.channels" type="number">
+  Number of audio channels
+</ResponseField>
+
+<ResponseField name="done" type="boolean">
+  Indicates if streaming is complete
+</ResponseField>
+
+## Model Selection Guide
+
+<AccordionGroup>
+  <Accordion title="By Use Case">
+    
+    **Real-time Applications**
+    - Recommended: hexgrad/Kokoro-82M or neuphonic/neutts-air
+    - Latency: 30-75ms
+    - Use for: Voice assistants, live translation
+    
+    **Professional Content**
+    - Recommended: maya-research/maya1 or canopylabs/orpheus-3b-0.1-ft
+    - Quality: Studio-grade
+    - Use for: Audiobooks, podcasts, narration
+    
+    **Conversational AI**
+    - Recommended: ResembleAI/chatterbox or nari-labs/Dia-1.6B
+    - Features: Emotion, context awareness
+    - Use for: Chatbots, virtual assistants
+    
+    **Multilingual Projects**
+    - Recommended: coqui/XTTS-v2
+    - Languages: Twenty-five plus
+    - Use for: International apps, dubbing
+    
+  </Accordion>
+  
+  <Accordion title="By Performance">
+    
+    **Lowest Latency**
+    - hexgrad/Kokoro-82M: ~30ms
+    - neuphonic/neutts-air: ~75ms
+    - ResembleAI/chatterbox: ~150ms
+    
+    **Highest Quality**
+    - maya-research/maya1: 4.9/5.0
+    - canopylabs/orpheus-3b-0.1-ft: 4.8/5.0
+    - coqui/XTTS-v2: 4.5/5.0
+    
+    **Best Efficiency**
+    - hexgrad/Kokoro-82M: 82M params
+    - neuphonic/neutts-air: Optimized
+    - ResembleAI/chatterbox: Balanced
+    
+  </Accordion>
+</AccordionGroup>
+
+## Advanced Features
+
+<Tabs>
+  <Tab title="Voice Cloning">
+    
+    Available with coqui/XTTS-v2 model.
+    
+    ```javascript
+    const request = {
+      model: "coqui/XTTS-v2",
+      text: "Hello with cloned voice",
+      voice_clone: {
+        audio_url: "https://example.com/sample.wav",
+        language: "en"
+      }
+    };
+    ```
+    
+    **Requirements:**
+    - Ten to thirty seconds of clean audio
+    - Single speaker only
+    - Sixteen kHz or higher sample rate
+    
+  </Tab>
+  
+  <Tab title="Emotion Control">
+    
+    Available with conversational models.
+    
+    ```javascript
+    const request = {
+      model: "ResembleAI/chatterbox",
+      text: "I'm excited!",
+      voice_settings: {
+        emotion: "excited",
+        emotion_strength: 0.8
+      }
+    };
+    ```
+    
+    **Available emotions:**
+    - neutral
+    - happy
+    - sad
+    - angry
+    - fearful
+    - surprised
+    
+  </Tab>
+  
+  <Tab title="SSML Support">
+    
+    Use SSML markup for fine control.
+    
+    ```xml
+    <speak>
+      <prosody rate="slow" pitch="+2st">
+        Slower and higher pitched.
+      </prosody>
+      <break time="500ms"/>
+      <emphasis level="strong">
+        Emphasized text!
+      </emphasis>
+    </speak>
+    ```
+    
+    **Supported tags:**
+    - break: Add pauses
+    - emphasis: Add stress
+    - prosody: Control rate, pitch, volume
+    - say-as: Pronunciation hints
+    
+  </Tab>
+</Tabs>
+
+## Error Codes
+
+| Code | Description | Resolution |
+|------|-------------|------------|
+| INVALID_API_KEY | Invalid API key | Check credentials |
+| RATE_LIMIT_EXCEEDED | Too many requests | Upgrade or wait |
+| MODEL_NOT_FOUND | Invalid model ID | Check model name |
+| TEXT_TOO_LONG | Exceeds limit | Split text |
+| INVALID_PARAMETERS | Bad request | Check format |
+| INSUFFICIENT_CREDITS | No credits | Add credits |
+| SERVER_ERROR | Internal error | Retry |
+
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Text Preprocessing">
+    
+    ```python
+    import re
+    
+    def preprocess_text(text):
+        # Expand abbreviations
+        replacements = {
+            "Dr.": "Doctor",
+            "Mr.": "Mister",
+            "Mrs.": "Misses",
+            "vs.": "versus"
+        }
+        
+        for abbr, full in replacements.items():
+            text = text.replace(abbr, full)
+        
+        # Clean special characters
+        text = re.sub(r'[^\w\s.,!?;:\-\'"()]', '', text)
+        
+        # Ensure proper ending punctuation
+        if not text.endswith(('.', '!', '?')):
+            text += '.'
+        
+        return text
+    ```
+    
+  </Accordion>
+  
+  <Accordion title="Connection Management">
+    
+    ```javascript
+    class ConnectionManager {
+      constructor(apiKey) {
+        this.apiKey = apiKey;
+        this.reconnectAttempts = 0;
+        this.maxReconnects = 5;
+      }
+    
+      connect() {
+        this.ws = new WebSocket('wss://api.sub200.dev/v1/tts', {
+          headers: { 'Authorization': `Bearer ${this.apiKey}` }
+        });
+    
+        this.ws.on('close', () => {
+          this.handleReconnect();
+        });
+      }
+    
+      handleReconnect() {
+        if (this.reconnectAttempts < this.maxReconnects) {
+          const delay = Math.pow(2, this.reconnectAttempts) * 1000;
+          setTimeout(() => {
+            this.reconnectAttempts++;
+            this.connect();
+          }, delay);
+        }
+      }
+    }
+    ```
+    
+  </Accordion>
+  
+  <Accordion title="Error Handling">
+    
+    ```python
+    class ErrorHandler:
+        def handle_error(self, error):
+            error_handlers = {
+                'RATE_LIMIT_EXCEEDED': self.handle_rate_limit,
+                'INVALID_API_KEY': self.handle_auth_error,
+                'TEXT_TOO_LONG': self.handle_text_length,
+                'SERVER_ERROR': self.handle_server_error
+            }
+            
+            handler = error_handlers.get(
+                error['code'], 
+                self.handle_generic
+            )
+            return handler(error)
+        
+        def handle_rate_limit(self, error):
+            reset_time = error['details']['reset_at']
+            print(f"Rate limit hit. Resets at {reset_time}")
+            # Implement backoff strategy
+    ```
+    
+  </Accordion>
+</AccordionGroup>
+
+## SDK Installation
+
+<CodeGroup>
+
+```bash npm
+npm install @sub200/tts
+```
+
+```bash pip
+pip install sub200
+```
+
+```bash go
+go get github.com/sub200/go-sdk
+```
+
+```bash cargo
+cargo add sub200
+```
+
+</CodeGroup>
+
+## Migration Guide
+
+<Tabs>
+  <Tab title="From ElevenLabs">
+    
+    **Model Mapping:**
+    - eleven_multilingual_v2 → canopylabs/orpheus-3b-0.1-ft
+    - eleven_turbo_v2 → neuphonic/neutts-air
+    - eleven_flash_v2 → hexgrad/Kokoro-82M
+    
+    **Key Differences:**
+    - WebSocket vs REST API
+    - Real-time streaming by default
+    - Open-source models
+    - More granular control
+    
+  </Tab>
+  
+  <Tab title="From Google TTS">
+    
+    **Model Mapping:**
+    - WaveNet → nari-labs/Dia-1.6B
+    - Neural2 → sesame/csm-1b
+    - Standard → neuphonic/neutts-air
+    
+    **Features:**
+    - Enhanced SSML support
+    - Voice cloning capabilities
+    - Emotion control
+    - Better multilingual support
+    
+  </Tab>
+  
+  <Tab title="From Amazon Polly">
+    
+    **Model Mapping:**
+    - Neural → ResembleAI/chatterbox
+    - Standard → hexgrad/Kokoro-82M
+    - Long-form → canopylabs/orpheus-3b-0.1-ft
+    
+    **Advantages:**
+    - Lower latency options
+    - More customization
+    - Open-source transparency
+    - Flexible pricing
+    
+  </Tab>
+</Tabs>
+
+## Support
 
 <CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
+  <Card title="Documentation" icon="book" href="https://docs.sub200.dev">
+    Comprehensive guides and tutorials
   </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
+  <Card title="Discord" icon="discord" href="https://discord.gg/">
+    Join our community
   </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/content/components/accordions"
-  >
-    Build interactive features and designs to guide your users
+  <Card title="GitHub" icon="github" href="https://github.com/">
+    SDKs and examples
   </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
+  <Card title="Status" icon="signal" href="https://sub200.dev">
+    Service monitoring
   </Card>
 </CardGroup>
+
+<Note>
+  Need help? Contact our support team at sumit@sub200.dev
+</Note>
+
+<Info>
+  sub200 - Democratizing voice AI with open-source models
+</Info>
